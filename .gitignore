@@ -1,0 +1,27 @@
+# Models — too large for git
+weights/
+*.pt
+*.onnx
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Logs
+*.log
+logs/
+
+# Images
+api/temp/
+ParkingImages/
+
+# OS
+.DS_Store
+Thumbs.db
