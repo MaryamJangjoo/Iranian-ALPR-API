@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "plate": "95 م 881 ایران 99",
+  "plate_raw": "95م88199",
+  "valid": true,
+  "confidence": 0.85,
+  "api_latency_ms": 293
+}
