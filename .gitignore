@@ -21,6 +21,7 @@ logs/
 # Images
 api/temp/
 ParkingImages/
+examples/*.jpg
 
 # OS
 .DS_Store
