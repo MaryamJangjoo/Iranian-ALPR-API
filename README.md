@@ -3,7 +3,7 @@
 > **Automatic License Plate Recognition** for Iranian license plates — built with YOLOv8, FastAPI, and Clean Architecture.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.95-green.svg)](https://fastapi.tiangolo.com/)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-purple.svg)](https://ultralytics.com/)
 
@@ -56,7 +56,7 @@ See [docs/architecture.md](docs/architecture.md) for the full system design.
 
 ### Prerequisites
 
-- Python 3.9+
+- Python 3.8+
 - CUDA-capable GPU (optional but recommended)
 - YOLOv8 model weights (see [Models](#-models) below)
 
@@ -66,7 +66,7 @@ See [docs/architecture.md](docs/architecture.md) for the full system design.
 git clone https://github.com/MaryamJangjoo/Iranian-ALPR-API.git
 cd Iranian-ALPR-API
 
-pip install -r requirements/dev.txt
+pip install -r requirements/base.txt
 pip install ultralytics torch torchvision
 ```
 
@@ -158,18 +158,33 @@ All settings can be overridden via environment variables or a `.env` file:
 | `OCR_TYPE` | `yolo` | OCR backend (`yolo` or `vendor`) |
 
 ---
-
 ## 🧪 Testing
+
+Run all automated tests:
 
 ```bash
 pytest tests/
 ```
 
-For a quick manual test with a real image:
+Run the pipeline integration test:
 
 ```bash
 python tests/test_pipeline.py
 ```
+
+Run the end-to-end ALPR test:
+
+```bash
+python tests/test_alpr.py
+```
+
+### Test Files
+
+| File | Purpose |
+|--------|--------|
+| `test_pipeline.py` | Tests the full ALPR pipeline using the factory-created pipeline instance |
+| `test_alpr.py` | End-to-end ALPR inference test using trained YOLO models |
+
 
 ---
 
@@ -204,7 +219,8 @@ Iranian-ALPR-API/
 │   ├── api.md
 │   └── pipeline.md
 ├── tests/
-│   └── test_pipeline.py
+│   ├── test_pipeline.py
+│   └── test_alpr.py
 ├── requirements/
 │   ├── base.txt
 │   ├── dev.txt

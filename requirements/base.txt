@@ -1,11 +1,28 @@
+# requirements/base.txt — Iranian-ALPR-API
+# Shared between dev and prod.
+# PyTorch is installed separately in Dockerfile / CI to pick the right wheel index.
+
+# ── Web framework ─────────────────────────────────────────────────────────────
 fastapi==0.95.2
 uvicorn==0.23.2
 pydantic==1.10.13
 python-multipart==0.0.6
 
-numpy==1.24.4
-opencv-python-headless==4.7.0.72
+# ── ML — YOLO inference ───────────────────────────────────────────────────────
+# NOTE: torch and torchvision must be installed BEFORE ultralytics.
+# In Docker / CI install them first:
+#   pip install torch==2.1.0+cpu torchvision==0.16.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements/base.txt
+ultralytics==8.4.14
 
+# ── Image processing ─────────────────────────────────────────────────────────
+opencv-python-headless==4.7.0.72
+Pillow==10.0.0
+
+# ── Numerical ────────────────────────────────────────────────────────────────
+numpy==1.24.4
+
+# ── ASGI internals (pinned for compatibility with fastapi 0.95) ───────────────
 anyio==3.7.1
 click==8.1.7
 h11==0.14.0
